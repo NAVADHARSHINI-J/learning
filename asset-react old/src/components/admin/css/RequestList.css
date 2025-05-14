@@ -1,0 +1,32 @@
+:root {
+    --primary-color: #1A5F7A;
+    --secondary-color: #159895;
+    --accent-color: #57C5B6;
+    --light-background: #F8F9FA;
+    --dark-text: #2C3333;
+}
+
+body {
+    background-color: var(--light-background);
+}
+.card-header {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(21, 152, 149, 0.1);
+}
+
+.table-actions {
+    white-space: nowrap;
+}
+
+.table-actions .btn {
+    margin-right: 5px;
+}

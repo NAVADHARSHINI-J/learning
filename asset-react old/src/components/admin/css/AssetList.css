@@ -1,0 +1,25 @@
+:root {
+    --primary-color: #1A5F7A;
+    --secondary-color: #159895;
+    --accent-color: #57C5B6;
+    --light-background: #F8F9FA;
+    --dark-text: #2C3333;
+}
+
+body {
+    background-color: var(--light-background);
+}
+.card-header {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.hover-effect:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.detail-label {
+    font-weight: bold;
+    color: var(--primary-color);
+}

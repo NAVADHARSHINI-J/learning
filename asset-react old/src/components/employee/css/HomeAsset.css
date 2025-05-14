@@ -1,0 +1,77 @@
+:root {
+--primary-color: #1A5F7A; /* Deep Blue */
+--secondary-color: #159895; /* Teal */
+--accent-color: #57C5B6; /* Light Cyan */
+--light-background: #F8F9FA; /* Light Grey */
+--dark-text: #2C3333; /* Dark Text */
+}
+
+.secondary-bg {
+    background-color: var(--secondary-color);
+}
+
+body {
+font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+background-color: var(--light-background);
+}
+
+.sidebar {
+min-height: 100vh;
+background-color: var(--primary-color);
+padding-top: 20px;
+}
+
+.sidebar .nav-link {
+color: white;
+padding: 10px 15px;
+transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+background-color: var(--accent-color);
+}
+
+.card {
+margin-bottom: 20px;
+border: none;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card-header {
+background-color: var(--secondary-color);
+color: white;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.dashboard-card {
+transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover {
+transform: scale(1.03);
+}
+
+.asset-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 20px;
+}
+
+.asset-card {
+transition: transform 0.3s ease;
+}
+
+.asset-card:hover {
+transform: scale(1.05);
+}
+
+.asset-card .card-img-top {
+width: 100%;
+height: 250px;
+object-fit: cover;
+}
+
+ 

@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "901b1269-a723-4e59-9e33-d1302ff26fb1",
+		"name": "ProjectTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43522038",
+		"_collection_link": "https://navadharshinij-577593.postman.co/workspace/Navadharshini-J's-Workspace~6fb3fab0-0d1a-49d0-8ce2-8209ef623368/collection/43522038-901b1269-a723-4e59-9e33-d1302ff26fb1?action=share&source=collection_link&creator=43522038"
+	},
+	"item": [
+		{
+			"name": "localhost:8081/api/auth/signup",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" :\"marina\",\r\n    \"password\": \"marina\",\r\n    \"role\" : \"PATIENT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/auth/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/api/auth/private",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqdWxpZSIsImV4cCI6MTc0NDcyNDY4MCwiaWF0IjoxNzQ0NjM4MjgwfQ.Yw0LS7xZbm5_IyVKKGGFtyBF1IbeWzbzp0bzsoi1d4M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/auth/private",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"private"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/api/auth/token/generate",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"robert\",\r\n    \"password\" : \"robert\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/auth/token/generate",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/api/auth/public",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/auth/public",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"public"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/api/doctor/add",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2JlcnQiLCJleHAiOjE3NDQ3ODQ2NzQsImlhdCI6MTc0NDY5ODI3NH0.FWh-kFB2xSL9rA6EBUSD7OQvpq1k26YaHFQfdEyHZzk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Robert\",\r\n    \"speciality\" : \"GYNAC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/doctor/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"doctor",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/api/patient/add",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXJpbmEiLCJleHAiOjE3NDQ3ODUwNDUsImlhdCI6MTc0NDY5ODY0NX0.Z_RuzeHVY7NrZ1Gi_guXloqz3TyMChU8r2WLh3M6W8E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"marina\",\r\n    \"age\" : 26,\r\n    \"illness\" : \"hormone disorders\",\r\n    \"num_of_years\" : 1,\r\n    \"current_medication\" : \"medication of hormone disorders\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/patient/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"patient",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/api/appointment/add/1/3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/api/appointment/add/1/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"appointment",
+						"add",
+						"1",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8081/api/appointment/byDoctor?doctorId=1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2JlcnQiLCJleHAiOjE3NDQ3ODUyMTksImlhdCI6MTc0NDY5ODgxOX0.31KQ6dTdiyoIPisr1PTFTwY6P14lCxBXt2zPKXVpHnc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/api/appointment/byDoctor?doctorId=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"appointment",
+						"byDoctor"
+					],
+					"query": [
+						{
+							"key": "doctorId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

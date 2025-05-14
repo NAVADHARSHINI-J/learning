@@ -1,0 +1,77 @@
+:root {
+    --primary-color: #1A5F7A;
+    --secondary-color: #159895;
+    --accent-color: #57C5B6;
+    --light-background: #F8F9FA;
+    --dark-text: #2C3333;
+    --card-shadow: rgba(0,0,0,0.1);
+}
+
+body {
+    background-color: var(--light-background);
+}
+.dashboard-stats {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    border: none;
+}
+
+.dashboard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px var(--card-shadow);
+}
+
+.card-total-employees {
+    background: linear-gradient(135deg, #6ba13f 0%, #45B7D1 100%);
+    color: white;
+}
+
+.card-total-assets {
+    background: linear-gradient(135deg, #e7dd47 0%, #FF6B6B 100%);
+    color: white;
+}
+
+.card-pending-requests {
+    background: linear-gradient(135deg, #A8DADC 0%, #457B9D 100%);
+    color: white;
+}
+.card-pending-asset{
+    background: linear-gradient(135deg, #8a3e6d 0%, #457B9D 100%);
+    color: white;
+}
+
+.dashboard-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.dashboard-title {
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.display-6 {
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.title{
+    color: rgb(140, 53, 211);             
+    font-weight: '600';              
+    font-size: '2rem';               
+    letter-spacing: '0.5px';        
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

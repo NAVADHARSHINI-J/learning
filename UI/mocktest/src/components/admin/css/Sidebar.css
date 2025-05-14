@@ -1,0 +1,32 @@
+:root {
+    --primary-color: #1A5F7A;
+    --secondary-color: #159895;
+    --accent-color: #57C5B6;
+    --light-background: #F8F9FA;
+    --dark-text: #2C3333;
+}
+
+body {
+    background-color: var(--light-background);
+}
+
+.sidebar {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar .nav-link {
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: var(--accent-color);
+}
+
+.profile {
+    background-color: #124559; 
+}  

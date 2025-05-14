@@ -1,0 +1,68 @@
+:root {
+    --primary-color: #1A5F7A;
+    --secondary-color: #159895;
+    --accent-color: #57C5B6;
+    --light-background: #F8F9FA;
+    --dark-text: #2C3333;
+}
+
+body {
+    background-color: var(--light-background);
+}
+
+.sidebar {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar .nav-link {
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: var(--accent-color);
+}
+
+.liquid {
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.liquid-header {
+    background-color: var(--secondary-color);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.liquid-assets-card {
+    transition: transform 0.3s ease;
+}
+
+.liquid-assets-card:hover {
+    transform: scale(1.03);
+}
+
+.quick-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    flex: 1;
+    margin: 0 10px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.transaction-table {
+    background-color: white;
+}
