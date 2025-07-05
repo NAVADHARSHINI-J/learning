@@ -1,0 +1,128 @@
+STEP 1: Add security dependency in POM.xml
+-----------------------------------------------------------
+ 
+		<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+ 
+STEP 2: Run the App and check your console for temp password
+ --------------------------------------------------------------------------------
+
+Using generated security password: 43118e51-7592-4600-9e91-e39a50b8c184
+ 
+STEP 3: Go to postman and call API without any AUTH
+ ---------------------------------------------------------------------
+- this will give you 401 UNAUTHORIZED
+ 
+STEP 4: From AUTH tab in postman, from AUTH TYPE dropdown, select basic Auth and 
+type temp username/password
+ ---------------------------------------------------------------------------------------------------------------
+user / 43118e51-7592-4600-9e91-e39a50b8c184
+ 
+and this should let you call your API successfully.  but not the post API
+ 
+STEP 5: Go to Spring Application class(in your base package) and add following property to it
+ 
+@SpringBootApplication /* (exclude = SecurityAutoConfiguration.class) */
+ -----------------------------------------------------------------------------------------------------
+this de-activates security and you should now be able to call your apis without giving any AUTH
+
+but excluding the security is not a good idea...
+=>so we have to configure the security config
+
+STEP 6 :
+--------------------------
+create a security.config file in config package
+
+STEP 7:   Add a method securityFilterChain
+-------------------------------------------------------
+take it from the documentation or
+@Bean
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http
+		 //cross site reference forgery to run post we have to disable this
+				.csrf(csrf ->csrf.disable())
+				.authorizeHttpRequests((authorize) -> authorize
+				.requestMatchers("/api/user/token/generate").permitAll()
+				.requestMatchers("/api/user/user/details").authenticated()
+				.requestMatchers("/api/asset/public/hello").permitAll()
+				.requestMatchers("/api/asset/private/hello").authenticated()
+				.requestMatchers("/api/user/signup").permitAll()
+				.requestMatchers("/api/user/login").authenticated()
+				.anyRequest().authenticated()
+			)
+				.httpBasic(Customizer.withDefaults())
+				.authenticationProvider(myAuth());
+		return http.build();
+	}
+
+
+STEP 6:
+------------
+==> implement the user class with  UserDetails  
+                    @Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		SimpleGrantedAuthority spa=new SimpleGrantedAuthority(role);
+		Collection<GrantedAuthority> g= new ArrayList<GrantedAuthority>();
+		g.add(spa);
+		return g;
+	}
+==> Create a class myService and implement it with UserDetailService and finish the unimplemented methods
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		return userRepository.findByUsername(username);
+	}
+
+STEP 7:
+-----------
+Write a myAuth() method in securityConfig
+
+	@Bean
+	AuthenticationProvider myAuth() {
+		DaoAuthenticationProvider dao=new DaoAuthenticationProvider();
+		dao.setPasswordEncoder(encoder());
+		dao.setUserDetailsService(myService);
+		return dao ;
+	}
+	
+STEP 8:
+------------
+we have to encode the password that was got from the user
+we use the bcrypt encoder to encode password
+we have to create a bean for bcrypt encoder in security config class
+
+	@Bean
+	BCryptPasswordEncoder encoder() {
+		BCryptPasswordEncoder bp=new BCryptPasswordEncoder();
+		return bp;
+	}
+ 
+STEP 9:
+-----------
+Encode the password in the signup method in the userService
+
+@Service
+public class UserService {
+	
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
+	public User signup(User user) throws InvalidUsernameException {
+		User user1=userRepository.findByUsername(user.getUsername());
+		if(user1 != null)
+			throw new InvalidUsernameException("Username already Exists.....");
+		//encode the password
+		String enpass=encoder.encode(user.getPassword());
+		//set in user
+		user.setPassword(enpass);
+		return userRepository.save(user);
+	}
+
+}
+
+
+---------------------------------------------------------------------------END-----------------------------------------------------------------------------------
+

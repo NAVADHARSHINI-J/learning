@@ -1,0 +1,5 @@
+Steps for adding router in react
+1. install npm i react-router
+npm i react-router-dom
+2.activating browserRouter    
+  <BrowserRouter></BrowserRouter>
